@@ -1,15 +1,16 @@
 console.log("Arya");
-// const languageList = require("./gettranslatedData.json");
-// console.log(languageList);
+
 const body = document.querySelector("body");
 const ul = document.createElement("ul");
-const createLi = (code, name) => {
+// create list Items
+const createList = (code, name) => {
   const list = document.createElement("li");
-  list.innerText = `${name}`;
   list.setAttribute("id", code);
+  list.innerText = `${name}`;
+  return list;
 };
-
-const languageList = async () => {
+// get language list from api
+const getLanguageList = async () => {
   const url = "https://text-translator2.p.rapidapi.com/getLanguages";
   const options = {
     method: "GET",
@@ -22,14 +23,25 @@ const languageList = async () => {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    const responseResult = await result.data.languages.map((ele) => console.log(ele));
-    console.log(responseResult);
+    return result;
   } catch (error) {
     console.error(error);
   }
 };
-languageList();
 
+// create ul with lists of languages from api
+const createLanguageList = async () => {
+  let languageListResponse = await getLanguageList();
+
+  let languageList = JSON.parse(languageListResponse);
+  languageList.data.languages.map((ele) => {
+    let list = createList(ele.code, ele.name);
+    ul.append(list);
+  });
+  console.log(ul);
+};
+createLanguageList();
+// container to be show on UI
 const tranlatorContainer = () => {
   const container = document.createElement("div");
   container.classList.add("tranlator-container");
@@ -41,9 +53,9 @@ const tranlatorContainer = () => {
   container.style.backgroundColor = "black";
   container.style.color = "white";
   container.innerText = "This is container";
-//   body.appendChild(container);
+  body.appendChild(container);
 };
-
+// need to replace the even as required
 document.addEventListener("mouseup", function () {
   const text = getSectedText();
   console.log(text);
@@ -61,8 +73,3 @@ function getSectedText() {
   return text;
 }
 
-// window.open(
-//   "index.html",
-//   "Arya",
-//   "width=400,height=150,status=yes,scrollbars=yes"
-// );
