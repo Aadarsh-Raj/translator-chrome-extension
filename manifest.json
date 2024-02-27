@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "MultiLingual Extension",
+  "version": "1.0.0",
+  "description": "Convert the text to your language with an flexible support on the same page you are working on",
+  "icons": {
+    "48": "icon.png"
+  },
+  "permissions": ["activeTab", "storage", "scripting"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./content.js"]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+body {
+  width: max-content;
+  height: max-content;
+  padding: 1rem;
+  background-color: rgb(228, 83, 83);
+  color: whitesmoke;
+  font-weight: bolder;
+}
+.tranlator-container {
+  position: absolute;
+  background-color: black;
+  padding: 2rem;
+  color: white;
+  z-index: 266;
+  top: 0;
+  right: 0;
+}
