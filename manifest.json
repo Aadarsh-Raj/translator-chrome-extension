@@ -6,7 +6,7 @@
   "icons": {
     "48": "icon.png"
   },
-  "permissions": ["activeTab", "storage", "scripting"],
+  "permissions": ["tabs","activeTab", "storage", "scripting","https://text-translator2.p.rapidapi.com/"],
   "action": {
     "default_popup": "popup.html"
   },
