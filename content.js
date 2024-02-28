@@ -1,7 +1,18 @@
 const body = document.querySelector("body");
 const container = document.createElement("div");
+container.innerHTML = `<div id="closeButton" onClick=${hideTranslatorContainer} style="width: min-content;
+padding: 3px 6px;
+font-weight: bolder;
+position: absolute;
+top: 6px;
+right: 10px;
+background-color: red;
+border-radius: 4.5px;"
+>X</div>`;
 var isDragging = false;
 var offsetX, offsetY;
+
+addTranslatorContainer();
 function addTranslatorContainer() {
   container.style.display = "none";
   container.classList.add("tranlator-container");
@@ -15,6 +26,7 @@ function addTranslatorContainer() {
   container.style.maxWidth = "300px";
   container.style.textOverflow = "wrap";
   container.style.cursor = "grab";
+
   container.addEventListener("mousedown", function (e) {
     isDragging = true;
 
@@ -49,10 +61,20 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   localStorage.setItem("languageSelected", message.text);
   console.log(localStorage.getItem("languageSelected"));
 });
+
 // container to be shown on UI
 const tranlatorContainer = (text) => {
   container.innerHTML = `
-  ${text}`;
+  <div id="closeButton" onClick=${hideTranslatorContainer} style="width: min-content;
+padding: 3px 6px;
+font-weight: bolder;
+position: absolute;
+top: 6px;
+right: 10px;
+background-color: red;
+border-radius: 4.5px;"
+>X</div>
+  <p>${text}</p>`;
   console.log(container);
 };
 
@@ -93,11 +115,12 @@ const transtlateText = async (text) => {
     const translatedText = JSON.parse(result);
     const container = document.querySelector(".tranlator-container");
     tranlatorContainer(translatedText.data.translatedText);
-
     container.style.display = "initial";
   } catch (error) {
     console.error(error);
   }
 };
 
-addTranslatorContainer();
+function hideTranslatorContainer() {
+  container.style.display = "none";
+}
