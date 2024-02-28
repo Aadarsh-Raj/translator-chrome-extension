@@ -1,24 +1,20 @@
 console.log("popus.js");
 const selectTag = document.querySelector("#select-language");
 
+selectTag.addEventListener("change", (e) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    const message = { text: e.target.value };
+    chrome.tabs.sendMessage(tabs[0].id, message);
+  });
+});
 
-
-
-selectTag.addEventListener("change",(e)=>{
-
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        const message = { text:e.target.value };
-        chrome.tabs.sendMessage(tabs[0].id, message);
-      });
-})
-
-  // get language list from api
+// get language list from api
 const getLanguageList = async () => {
   const url = "https://text-translator2.p.rapidapi.com/getLanguages";
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "475ffacf66msh6a09364be8109ddp12df85jsn8cc3202fc331",
+      "X-RapidAPI-Key": "c97f50abb2msh3616900d606885ep1f45aajsn0970ab5aca5d",
       "X-RapidAPI-Host": "text-translator2.p.rapidapi.com",
     },
   };
@@ -45,7 +41,6 @@ const createLanguageList = async () => {
 };
 createLanguageList();
 
-
 // create list Items
 const createOptions = (code, name) => {
   const list = document.createElement("option");
@@ -53,5 +48,3 @@ const createOptions = (code, name) => {
   list.innerText = `${name}`;
   return list;
 };
-
-

@@ -6,12 +6,3 @@ body {
   color: whitesmoke;
   font-weight: bolder;
 }
-.tranlator-container {
-  position: absolute;
-  background-color: black;
-  padding: 2rem;
-  color: white;
-  z-index: 266;
-  top: 0;
-  right: 0;
-}

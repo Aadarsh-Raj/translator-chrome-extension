@@ -6,14 +6,21 @@
   "icons": {
     "48": "icon.png"
   },
-  "permissions": ["tabs","activeTab", "storage", "scripting","https://text-translator2.p.rapidapi.com/"],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "scripting",
+    "https://text-translator2.p.rapidapi.com/"
+  ],
   "action": {
     "default_popup": "popup.html"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["./content.js"]
+      "js": ["./content.js"],
+      "css": ["tabStyle.css"]
     }
   ]
 }
