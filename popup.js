@@ -14,7 +14,7 @@ const getLanguageList = async () => {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "c97f50abb2msh3616900d606885ep1f45aajsn0970ab5aca5d",
+      "X-RapidAPI-Key": "7a99335ba3msh4c15e38dcf8c85cp1d1a93jsnc73ce002621f",
       "X-RapidAPI-Host": "text-translator2.p.rapidapi.com",
     },
   };
