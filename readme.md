@@ -33,8 +33,9 @@
 ###### Note: If You get error in the draggable container, then please log in to given api, subscribe for test then use your own api key by replacing it.
 <br>
 <br>
-Tech Stack Used: JavaScript, Manifest.json(for chrome extension)
-Api Used: https://rapidapi.com/dickyagustin/api/text-translator2/
+Tech Stack Used: JavaScript, Manifest.json(for chrome extension) <br>
+
+Api Used: https://rapidapi.com/dickyagustin/api/text-translator2/ <br>
 Api rating: 9.9/10
 <br>
 <br>
