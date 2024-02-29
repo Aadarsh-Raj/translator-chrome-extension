@@ -19,8 +19,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["./content.js"],
-      "css": ["tabStyle.css"]
+      "js": ["./content.js"]
     }
   ]
 }
